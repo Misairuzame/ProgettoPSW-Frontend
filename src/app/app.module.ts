@@ -1,21 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MusicListComponent } from './music-list/music-list.component';
-
 import { HttpClientModule } from '@angular/common/http';
+import { MusicByIdComponent } from './music-by-id/music-by-id.component';
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
     AppComponent,
-    MusicListComponent
+    MusicListComponent,
+    MusicByIdComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

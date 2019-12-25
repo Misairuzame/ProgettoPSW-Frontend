@@ -1,5 +1,4 @@
-<div class="card my-5">
-    <div class="card-body">
+<div class="container">
       <table class="table table-bordered table-striped">
         <thead class="thead-dark">
           <tr>
@@ -24,5 +23,24 @@
           </tr>
         </tbody>
       </table>
-    </div>
+      <blockquote class="blockquote text-center">
+        <p class="mb-0">Pagina {{ page }}</p>
+        <p class="text-info">Usa i pulsanti per navigare le pagine.</p>
+      </blockquote>
+
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <button class="btn btn-primary m-5" [disabled]="page == 0" (click)="prevPage(page)">Pagina precedente</button>
+            <button class="btn btn-primary m-5" [disabled]="noNextPage" (click)="nextPage(page)">Pagina successiva</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert fade step m-3" [class.show]="show" [class.alert-success]="success" [class.alert-danger]="!success" role="alert">
+        <button type="button" class="close" (click)="show = false" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Messaggio dal server:</strong> {{ message }}
+      </div>
   </div>

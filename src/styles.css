@@ -1,2 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-@import "../node_modules/bootstrap/dist/css/bootstrap.css"
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+
+.show {
+    opacity: 1 !important;
+}
+.step {
+    opacity: 0;
+    transition: .5s ease-in-out all;
+}

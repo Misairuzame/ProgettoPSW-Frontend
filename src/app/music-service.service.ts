@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpRequest, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Music } from './music';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +13,18 @@ export class MusicServiceService {
     this.musicUrl = "http://localhost:8080/music";
   }
 
-  public getAllMusic(page: number): Observable<Music[]> {
-    return this.http.get<Music[]>(this.musicUrl+"?page="+page);
+  public parseArray(jsonArray: string) {
+    console.log("jsonArray: "+jsonArray);
+  }
+
+  public getAllMusic(page: number): Observable<string> {
+    let params: HttpParams = new HttpParams()
+                .set("page", page.toString());
+    return this.http.get<string>(this.musicUrl, {params});
+  }
+
+  public getMusicById(id: number): Observable<string> {
+    return this.http.get<string>(this.musicUrl+"/"+id);
   }
 
 }
