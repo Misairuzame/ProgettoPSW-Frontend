@@ -5,19 +5,23 @@ import { AppComponent } from './app.component';
 import { MusicListComponent } from './music-list/music-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MusicByIdComponent } from './music-by-id/music-by-id.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { SearchMusicComponent } from './search-music/search-music.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     MusicListComponent,
-    MusicByIdComponent
+    MusicByIdComponent,
+    SearchMusicComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

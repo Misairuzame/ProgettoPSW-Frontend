@@ -13,10 +13,6 @@ export class MusicServiceService {
     this.musicUrl = "http://localhost:8080/music";
   }
 
-  public parseArray(jsonArray: string) {
-    console.log("jsonArray: "+jsonArray);
-  }
-
   public getAllMusic(page: number): Observable<string> {
     let params: HttpParams = new HttpParams()
                 .set("page", page.toString());
@@ -25,6 +21,16 @@ export class MusicServiceService {
 
   public getMusicById(id: number): Observable<string> {
     return this.http.get<string>(this.musicUrl+"/"+id);
+  }
+
+  public getMusicByParams(paramValues: string[], paramNames: string[], page: number): Observable<string> {
+    let params: HttpParams = new HttpParams();
+    let i: number;
+    for(i=0; i<paramValues.length; i++) {
+      params = params.set(paramNames[i], paramValues[i]);
+    }
+    params = params.set("page", page.toString());
+    return this.http.get<string>(this.musicUrl, {params});
   }
 
 }

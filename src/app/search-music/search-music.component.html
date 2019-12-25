@@ -1,0 +1,32 @@
+<div class="container">
+    <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col">
+                <label for="title">Titolo</label>
+                <input class="form-control" formControlName="title" type="text" name="title" id="title" placeholder="Titolo">
+            </div>
+            <div class="col">
+                <label for="author">Autore</label>
+                <input class="form-control" formControlName="author" type="text" name="author" id="author" placeholder="Autore">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="album">Album</label>
+                <input class="form-control" formControlName="album" type="text" name="album" id="album" placeholder="Album">
+            </div>        
+            <div class="col">
+                <label for="year">Anno</label>
+                <input class="form-control" formControlName="year" type="number" name="year" id="year" placeholder="Anno" min=0>
+            </div>
+            <div class="col">
+                <label for="genre">Genere</label>
+                <input class="form-control" formControlName="genre" type="text" name="genre" id="genre" placeholder="Genere">
+            </div>
+            <div class="col">
+                <input type="submit" class="btn mt-4" [disabled]="!isFormValid()" [class.btn-primary]="isFormValid()"
+                [class.btn-secondary]="!isFormValid()" value="Cerca">
+            </div>
+        </div>
+    </form>
+</div>
