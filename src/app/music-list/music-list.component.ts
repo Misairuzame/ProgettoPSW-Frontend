@@ -20,7 +20,7 @@ export class MusicListComponent implements OnInit {
   constructor(private musicService: MusicServiceService) {
   }
 
-  nextPage(pageNum: number) {
+  nextPage() {
     this.show = false;
     this.page++;
     this.getData(this.page);
@@ -28,7 +28,7 @@ export class MusicListComponent implements OnInit {
     this.evalNextPage();
   }
 
-  prevPage(pageNum: number) {
+  prevPage() {
     this.show = false;
     this.page--;
     this.getData(this.page);

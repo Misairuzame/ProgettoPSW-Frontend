@@ -8,13 +8,15 @@ import { MusicByIdComponent } from './music-by-id/music-by-id.component';
 import { FormsModule } from '@angular/forms';
 import { SearchMusicComponent } from './search-music/search-music.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { InsertMusicComponent } from './insert-music/insert-music.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MusicListComponent,
     MusicByIdComponent,
-    SearchMusicComponent
+    SearchMusicComponent,
+    InsertMusicComponent
   ],
   imports: [
     BrowserModule,

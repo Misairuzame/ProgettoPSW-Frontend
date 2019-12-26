@@ -17,7 +17,10 @@ export class SearchMusicComponent implements OnInit {
   whichValue: string[];
   message: string;
   musicList: Music[];
-  page: number;
+  page: number = 0;
+  success: boolean = false;
+  noNextPage: boolean;
+  show: boolean;
 
   constructor(private musicService: MusicServiceService) {
     this.searchForm = new FormGroup({
@@ -29,20 +32,23 @@ export class SearchMusicComponent implements OnInit {
     });
     this.whichParam = new Array();
     this.whichValue = new Array();
-    this.page = 0;
   }
 
   isFormValid() {
     let bool: boolean;
-    bool = this.searchForm.value.title.length > 0 ||
-           this.searchForm.value.author.length > 0 ||
-           this.searchForm.value.album.length > 0 ||
-           this.searchForm.value.year.toString().length > 0 ||
-           this.searchForm.value.genre.length > 0;
+    bool = this.searchForm.value.title !== null ||
+           this.searchForm.value.author !== null ||
+           this.searchForm.value.album !== null ||
+           this.searchForm.value.year !== null ||
+           this.searchForm.value.genre !== null;
     return bool;
   }
 
-  onSubmit() {
+  onSubmit() {    
+    this.page = 0;
+    this.whichParam = new Array();
+    this.whichValue = new Array();
+
     this.filter.title = this.searchForm.value.title;
     this.filter.author = this.searchForm.value.author;
     this.filter.album = this.searchForm.value.album;
@@ -50,52 +56,70 @@ export class SearchMusicComponent implements OnInit {
     this.filter.genre = this.searchForm.value.genre;
     
     let i: number = 0;
-    if(this.filter.title.length > 0) {
+    if(this.filter.title !== null) {
       this.whichParam.push("title");
       this.whichValue.push(this.filter.title);
     }
-    if(this.filter.author.length > 0) {
+    if(this.filter.author !== null) {
       this.whichParam.push("author");
       this.whichValue.push(this.filter.author);
     }
-    if(this.filter.album.length > 0) {
+    if(this.filter.album !== null) {
       this.whichParam.push("album");
       this.whichValue.push(this.filter.album);
     }
-    if(this.filter.year.toString().length > 0) {
+    if(this.filter.year !== null) {
       this.whichParam.push("year");
       this.whichValue.push(this.filter.year.toString());
     }
-    if(this.filter.genre.length > 0) {
-      this.whichParam.push("title");
+    if(this.filter.genre !== null) {
+      this.whichParam.push("genre");
       this.whichValue.push(this.filter.genre);
     }
 
-    this.getData();
+    this.getData(this.page);
 
-    this.resetAll();
+    this.searchForm.reset();
   }
 
-  getData() {
-    this.musicService.getMusicByParams(this.whichParam, this.whichValue, this.page).subscribe(
+  getData(pageNum: number) {
+    this.show = false;
+    this.musicService.getMusicByParams(this.whichParam, this.whichValue, pageNum).subscribe(
       result => {
+        this.success = true;
         console.log("Received from server:");
         console.log(result);
         this.musicList = result["data"];
         this.message = result["message"];
     },
     err => {
+      this.success = false;
       console.log("Received from server:");
       console.log(err["error"]);
       this.message = err["error"]["message"];
     });
+    this.show = true;
+
+    this.evalNextPage();
   }
 
-  resetAll() {
-    this.searchForm.reset();
-    this.page = 0;
-    this.whichParam = new Array();
-    this.whichValue = new Array();
+  prevPage(){
+    this.page--;
+    this.getData(this.page);
+    this.evalNextPage();
+  }
+
+  nextPage(){
+    this.page++;
+    this.getData(this.page);
+    this.evalNextPage();
+  }
+
+  evalNextPage() {
+    setTimeout( () => {
+      this.noNextPage = this.musicList.length < 10;
+      return !this.noNextPage;
+    }, 300 );
   }
 
   ngOnInit() {
