@@ -1,5 +1,5 @@
 <div class="container">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped table-light">
         <thead class="thead-dark">
           <tr>
             <th scope="col">Id</th>
@@ -26,13 +26,13 @@
 
 <form class="form-inline">
     <div class="form-group">
-        <label for="musicId"><h6>ID Musica:</h6></label>
+        <label for="musicId"><h6>ID Musica da eliminare:</h6></label>
         <input type="number" class="form-control ml-3" [(ngModel)]="musicId" name="musicId" id="musicId">
     </div>
     <input type="submit" class="btn btn-primary ml-3" (click)="getData(musicId)" value="Cerca">
 </form>
 
-<button class="btn btn-warning btn-block mt-4" [hidden]="!success" (click)="deleteMusic(musicId)">
+<button class="btn btn-danger btn-block mt-4" [hidden]="!success" (click)="deleteMusic(musicId)">
     Elimina musica con ID {{ musicId }}
 </button>
 

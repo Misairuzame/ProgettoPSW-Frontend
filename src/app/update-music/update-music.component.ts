@@ -92,7 +92,12 @@ export class UpdateMusicComponent implements OnInit {
     });
     this.show = true;
 
-    this.getData(this.music.id);
+    setTimeout( () => {
+      this.getData(this.music.id);
+    }, 500);
+    /* Questo timeout si può anche togliere, è stato
+       messo per permettere facilmente modificazioni
+       successive della stessa musica. */
   }
 
   ngOnInit() { }

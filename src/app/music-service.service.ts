@@ -9,9 +9,17 @@ import { Music } from './music';
 export class MusicServiceService {
 
   private musicUrl: string;
+  private homeUrl: string;
 
   constructor(private http: HttpClient) {
     this.musicUrl = "http://localhost:8080/music";
+    this.homeUrl = "http://localhost:8080";
+  }
+
+  public getHomepage(): Observable<string> {
+    let headers = new HttpHeaders()
+                .set('Content-Type', 'application/json');
+    return this.http.get<string>(this.homeUrl, { headers: headers});
   }
 
   public getAllMusic(page: number): Observable<string> {

@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InsertMusicComponent } from './insert-music/insert-music.component';
 import { UpdateMusicComponent } from './update-music/update-music.component';
 import { DeleteMusicComponent } from './delete-music/delete-music.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DeleteMusicComponent } from './delete-music/delete-music.component';
     SearchMusicComponent,
     InsertMusicComponent,
     UpdateMusicComponent,
-    DeleteMusicComponent
+    DeleteMusicComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,

@@ -6,9 +6,13 @@ import { SearchMusicComponent } from './search-music/search-music.component';
 import { InsertMusicComponent } from './insert-music/insert-music.component';
 import { UpdateMusicComponent } from './update-music/update-music.component';
 import { DeleteMusicComponent } from './delete-music/delete-music.component';
-
+import { HomepageComponent } from './homepage/homepage.component';
 
 const routes: Routes = [
+{
+  path: '',
+  component: HomepageComponent
+},
 {
   path: 'list',
   component: MusicListComponent
