@@ -9,6 +9,8 @@ import { FormsModule } from '@angular/forms';
 import { SearchMusicComponent } from './search-music/search-music.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InsertMusicComponent } from './insert-music/insert-music.component';
+import { UpdateMusicComponent } from './update-music/update-music.component';
+import { DeleteMusicComponent } from './delete-music/delete-music.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { InsertMusicComponent } from './insert-music/insert-music.component';
     MusicListComponent,
     MusicByIdComponent,
     SearchMusicComponent,
-    InsertMusicComponent
+    InsertMusicComponent,
+    UpdateMusicComponent,
+    DeleteMusicComponent
   ],
   imports: [
     BrowserModule,

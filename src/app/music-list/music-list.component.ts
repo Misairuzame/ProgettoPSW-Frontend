@@ -12,7 +12,6 @@ export class MusicListComponent implements OnInit {
   musicList: Music[];
   message: string;
   show: boolean = true;
-  isDataLoaded: boolean = false;
   page: number = 0;
   noNextPage: boolean;
   success: boolean;

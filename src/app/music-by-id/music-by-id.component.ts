@@ -13,7 +13,6 @@ export class MusicByIdComponent implements OnInit {
   music: Music;
   message: string;
   show: boolean = false;
-  isDataLoaded: boolean = false;
   musicId: number = 0;
   success: boolean;
 
@@ -22,11 +21,9 @@ export class MusicByIdComponent implements OnInit {
 
   getData() {
     this.show = false;
-    this.isDataLoaded = false;
     this.musicService.getMusicById(this.musicId).subscribe(
       result => {
         this.success = true;
-        this.isDataLoaded = true;
         console.log("Received from server:");
         console.log(result);
         this.music = result["data"][0];
@@ -34,7 +31,6 @@ export class MusicByIdComponent implements OnInit {
     },
     err => {
       this.success = false;
-      this.isDataLoaded = false;
       console.log("Received from server:");
       console.log(err["error"]);
       this.message = err["error"]["message"];

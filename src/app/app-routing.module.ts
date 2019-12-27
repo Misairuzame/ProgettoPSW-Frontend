@@ -4,6 +4,8 @@ import { MusicListComponent } from './music-list/music-list.component';
 import { MusicByIdComponent } from './music-by-id/music-by-id.component';
 import { SearchMusicComponent } from './search-music/search-music.component';
 import { InsertMusicComponent } from './insert-music/insert-music.component';
+import { UpdateMusicComponent } from './update-music/update-music.component';
+import { DeleteMusicComponent } from './delete-music/delete-music.component';
 
 
 const routes: Routes = [
@@ -22,6 +24,14 @@ const routes: Routes = [
 {
   path: 'insert',
   component: InsertMusicComponent
+},
+{
+  path: 'update',
+  component: UpdateMusicComponent
+},
+{
+  path: 'delete',
+  component: DeleteMusicComponent
 }];
 
 @NgModule({
