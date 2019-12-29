@@ -21,9 +21,9 @@ export class UpdateMusicComponent implements OnInit {
   constructor(private musicService: MusicServiceService) {
     this.updateForm = new FormGroup({
       musicId: new FormControl('', [Validators.maxLength(50), Validators.required, Validators.pattern('^[\\d]*$')]),
-      title: new FormControl('', [Validators.maxLength(50), Validators.required, Validators.pattern('^[\\w\\s\\-]*$')]),
-      author: new FormControl('', [Validators.maxLength(50), Validators.required, Validators.pattern('^[\\w\\s\\-]*$')]),
-      album: new FormControl('', [Validators.maxLength(50), Validators.required, Validators.pattern('^[\\w\\s\\-]*$')]),
+      title: new FormControl('', [Validators.maxLength(50), Validators.required, Validators.pattern('^[\\w\\s\\-\\(\\)\\!\\&]*$')]),
+      author: new FormControl('', [Validators.maxLength(50), Validators.required, Validators.pattern('^[\\w\\s\\-\\(\\)\\!\\&]*$')]),
+      album: new FormControl('', [Validators.maxLength(50), Validators.required, Validators.pattern('^[\\w\\s\\-\\(\\)\\!\\&]*$')]),
       year: new FormControl('', [Validators.maxLength(4), Validators.required, Validators.pattern('^\\d{4}$')]),
       genre: new FormControl('', [Validators.maxLength(50), Validators.required, Validators.pattern('^[\\w\\s\\-]*$')]),
       url: new FormControl('', [Validators.maxLength(50),  Validators.required,

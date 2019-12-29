@@ -19,7 +19,9 @@
             <td>{{ music.album }}</td>
             <td>{{ music.year }}</td>
             <td>{{ music.genre }}</td>
-            <td>{{ music.url }}</td>
+            <td>
+              <a [href]="music.url" target="_blank">Ascolta</a>
+            </td>
           </tr>
         </tbody>
       </table>

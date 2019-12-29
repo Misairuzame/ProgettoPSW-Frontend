@@ -24,9 +24,9 @@ export class SearchMusicComponent implements OnInit {
 
   constructor(private musicService: MusicServiceService) {
     this.searchForm = new FormGroup({
-      title: new FormControl('', [Validators.maxLength(50), Validators.pattern('^[\\w\\s\\-]*$')]),
-      author: new FormControl('', [Validators.maxLength(50), Validators.pattern('^[\\w\\s\\-]*$')]),
-      album: new FormControl('', [Validators.maxLength(50), Validators.pattern('^[\\w\\s\\-]*$')]),
+      title: new FormControl('', [Validators.maxLength(50), Validators.pattern('^[\\w\\s\\-\\(\\)\\!\\&]*$')]),
+      author: new FormControl('', [Validators.maxLength(50), Validators.pattern('^[\\w\\s\\-\\(\\)\\!\\&]*$')]),
+      album: new FormControl('', [Validators.maxLength(50), Validators.pattern('^[\\w\\s\\-\\(\\)\\!\\&]*$')]),
       year: new FormControl('', [Validators.maxLength(4), Validators.pattern('^\\d{4}$')]),
       genre: new FormControl('', [Validators.maxLength(50), Validators.pattern('^[\\w\\s\\-]*$')])
     });
